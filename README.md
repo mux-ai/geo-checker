@@ -63,8 +63,9 @@ export CLAUDE_API_KEY="sk-ant-your-claude-api-key"
 # For OpenAI - Most popular with cost-effective options  
 export OPENAI_API_KEY="sk-proj-your-openai-api-key"
 
-# For local LLM - Privacy-focused, no API costs
+# For local LLM - Privacy-focused, no API costs, run locally
 export OLLAMA_BASE_URL="http://localhost:11434"  # Optional, defaults to this
+# No API key required - just install Ollama and pull models!
 ```
 
 ### ✅ **API Key Validation**
@@ -72,7 +73,16 @@ export OLLAMA_BASE_URL="http://localhost:11434"  # Optional, defaults to this
 The tool automatically validates API key formats:
 - **Claude**: Must start with `sk-ant-`
 - **OpenAI**: Must start with `sk-` or `sk-proj-`
-- **Local**: No API key required
+- **Local**: No API key required - just needs Ollama running locally
+
+### 🏠 **Why Choose Local LLM?**
+
+- **🔒 Privacy**: Your data never leaves your machine
+- **💰 Cost-effective**: No API usage fees - unlimited analysis
+- **🚀 Speed**: No network latency, direct local processing
+- **🔌 Offline**: Works without internet connection
+- **🛡️ Security**: Perfect for sensitive content analysis
+- **⚙️ Control**: Choose your own models and configurations
 
 ### 🎪 **Interactive Setup & Auto-Detection**
 
@@ -251,15 +261,62 @@ Scan a local directory for HTML files:
   - `gpt-4` - High quality reasoning, proven performance
   - `gpt-3.5-turbo` - Fast, economical, good for simple analysis tasks
 
-### 🏠 **Local LLM**
+### 🏠 **Local LLM (Ollama)**
 
-- **Setup**: Compatible with OpenAI API format (Ollama, LocalAI)
+- **Setup**: Runs locally, no API costs, privacy-focused
 - **URL**: `OLLAMA_BASE_URL` or default `http://localhost:11434`
-- **Recommended Models**:
-  - ⭐ `llama2` - Open source, reliable
-  - `llama3` - Latest open source model
-  - `codellama` - Specialized for code analysis
-  - `mistral` - Efficient alternative
+- **Available Models**:
+  - ⭐ `llama2` - Open source, reliable, best for GEO analysis
+  - `llama3` - Latest open source model, improved performance
+  - `codellama` - Specialized for code analysis and technical content
+  - `mistral` - Efficient alternative, good balance of speed/quality
+
+#### **🛠️ Quick Ollama Setup**
+
+**Step 1: Install Ollama**
+```bash
+# Linux/macOS/WSL
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Windows: Download from https://ollama.com/download
+
+# Docker alternative
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+```
+
+**Step 2: Pull a Model**
+```bash
+# Recommended for GEO analysis
+ollama pull llama2
+
+# Or try the latest version
+ollama pull llama3
+
+# For technical content analysis
+ollama pull codellama
+```
+
+**Step 3: Start Ollama**
+```bash
+# Start the Ollama server (if not auto-started)
+ollama serve
+
+# Verify it's running
+curl http://localhost:11434/api/version
+```
+
+**Step 4: Use with GEO Checker**
+```bash
+# Use local provider with specific model
+./geo-checker analyze https://example.com --provider local --model llama2
+
+# Interactive selection
+./geo-checker analyze https://example.com --interactive
+# Choose: 3. local → 1. llama2
+
+# See available local models
+./geo-checker models local
+```
 
 ### 📋 **Model Management**
 
@@ -401,6 +458,10 @@ export OPENAI_API_KEY="your-key"
 ./geo-checker analyze https://example.com --mode llm --provider claude
 ./geo-checker analyze https://example.com --mode hybrid --provider openai --model gpt-4o
 
+# 🏠 Local LLM analysis (privacy-focused, no API costs)
+./geo-checker analyze https://example.com --provider local --model llama2
+./geo-checker analyze https://example.com --mode hybrid --provider local --model llama3
+
 # 📋 Model management
 ./geo-checker models  # List all available models
 ./geo-checker models openai  # List OpenAI models only
@@ -538,6 +599,28 @@ echo $OPENAI_API_KEY
 ./geo-checker analyze <url> --interactive
 ```
 
+#### Local LLM (Ollama) Issues
+```bash
+# Check if Ollama is running
+curl http://localhost:11434/api/version
+
+# Start Ollama if not running
+ollama serve
+
+# List installed models
+ollama list
+
+# Pull a model if none installed
+ollama pull llama2
+
+# Test Ollama directly
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama2",
+  "prompt": "Test prompt",
+  "stream": false
+}'
+```
+
 ### Score Discrepancies
 
 - **Low local, high LLM**: Good content, poor structure → Fix technical issues
@@ -581,8 +664,10 @@ MIT License - see LICENSE file for details.
 |------|---------|-------|
 | **Basic analysis** | `./geo-checker analyze <url>` | Auto-detects best method |
 | **With API key** | `export OPENAI_API_KEY="key" && ./geo-checker analyze <url>` | Uses hybrid mode |
+| **Local LLM** | `./geo-checker analyze <url> --provider local --model llama2` | Privacy-focused, no API costs |
 | **Interactive setup** | `./geo-checker analyze <url> -i` | Guided model selection |
 | **List models** | `./geo-checker models` | Shows all available models |
+| **Local models only** | `./geo-checker models local` | Shows Ollama models |
 | **Debug issues** | `./geo-checker debug <url>` | Troubleshoot content extraction |
 | **Bulk analysis** | `./geo-checker bulk urls.txt` | Process multiple URLs |
 | **Local files** | `./geo-checker scan ./website` | Analyze local HTML files |
