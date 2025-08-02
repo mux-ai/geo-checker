@@ -7,7 +7,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "geo-checker",
+	Use:   "mux-geo",
 	Short: "Generative Engine Optimization CLI tool",
 	Long: `A powerful CLI tool for Generative Engine Optimization (GEO) that provides:
 - Bulk URL checking and analysis

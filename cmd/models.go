@@ -55,8 +55,8 @@ var modelsCmd = &cobra.Command{
 			
 			fmt.Println("\n⭐ = Recommended model")
 			fmt.Println("\nUsage:")
-			fmt.Println("  geo-checker analyze <url> --provider <provider> --model <model>")
-			fmt.Println("  geo-checker analyze <url> --interactive")
+			fmt.Println("  mux-geo analyze <url> --provider <provider> --model <model>")
+			fmt.Println("  mux-geo analyze <url> --interactive")
 		}
 		
 		return nil

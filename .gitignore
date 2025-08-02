@@ -19,6 +19,8 @@ go.work
 go.work.sum
 
 # Build artifacts
+/mux-geo
+/mux-geo.exe
 /geo-checker
 /geo-checker.exe
 /mux-geo-checker

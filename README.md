@@ -42,7 +42,7 @@ A powerful CLI tool for Generative Engine Optimization (GEO) that helps optimize
 git clone <repository-url>
 cd mux-geo-checker
 go mod tidy
-go build -o geo-checker main.go
+go build -o mux-geo main.go
 ```
 
 ## Configuration
@@ -88,16 +88,16 @@ The tool automatically validates API key formats:
 
 ```bash
 # Let the tool guide you through setup
-./geo-checker analyze <url> --interactive
+./mux-geo analyze <url> --interactive
 
 # See available models and providers  
-./geo-checker models
-./geo-checker models openai
-./geo-checker models claude
+./mux-geo models
+./mux-geo models openai
+./mux-geo models claude
 
 # Auto-provider detection (NEW!)
 export OPENAI_API_KEY="your-key"  # Only OpenAI key set
-./geo-checker analyze <url>       # Auto-detects and uses OpenAI
+./mux-geo analyze <url>           # Auto-detects and uses OpenAI
 # ✓ Analysis complete! Score: 65/100 (Local: 29 + AI: 85, averaged)
 ```
 
@@ -109,19 +109,19 @@ Get intelligent GEO analysis automatically:
 
 ```bash
 # Auto mode - uses best available method
-./geo-checker analyze https://example.com
+./mux-geo analyze https://example.com
 
 # Interactive mode - guided setup
-./geo-checker analyze https://example.com --interactive
+./mux-geo analyze https://example.com --interactive
 
 # Debug content extraction issues
-./geo-checker debug https://example.com
+./mux-geo debug https://example.com
 
 # Scan local files
-./geo-checker scan ./website
+./mux-geo scan ./website
 
 # Bulk analyze URLs
-./geo-checker bulk urls.txt
+./mux-geo bulk urls.txt
 ```
 
 ### 🤖 **Enhanced Analysis with LLMs**
@@ -131,17 +131,17 @@ For deeper insights with AI-powered analysis:
 ```bash
 # Automatic hybrid analysis (when API key available)
 export OPENAI_API_KEY="your-key"
-./geo-checker analyze https://example.com  # Auto-detects and uses hybrid
+./mux-geo analyze https://example.com  # Auto-detects and uses hybrid
 
 # Force specific modes
-./geo-checker analyze https://example.com --mode llm --provider claude
-./geo-checker analyze https://example.com --mode hybrid --provider openai
+./mux-geo analyze https://example.com --mode llm --provider claude
+./mux-geo analyze https://example.com --mode hybrid --provider openai
 
 # Interactive model selection
-./geo-checker analyze https://example.com --interactive
+./mux-geo analyze https://example.com --interactive
 
 # Advanced options
-./geo-checker analyze https://example.com \
+./mux-geo analyze https://example.com \
   --mode hybrid \
   --provider openai \
   --model gpt-4o \
@@ -162,7 +162,7 @@ https://blog.example.com
 Run bulk analysis:
 
 ```bash
-./geo-checker bulk urls.txt --concurrent 3 --output json
+./mux-geo bulk urls.txt --concurrent 3 --output json
 ```
 
 ### Directory Scanning
@@ -170,7 +170,7 @@ Run bulk analysis:
 Scan a local directory for HTML files:
 
 ```bash
-./geo-checker scan ./website --extensions .html,.htm --output markdown
+./mux-geo scan ./website --extensions .html,.htm --output markdown
 ```
 
 ## Command Options
@@ -308,29 +308,29 @@ curl http://localhost:11434/api/version
 **Step 4: Use with GEO Checker**
 ```bash
 # Use local provider with specific model
-./geo-checker analyze https://example.com --provider local --model llama2
+./mux-geo analyze https://example.com --provider local --model llama2
 
 # Interactive selection
-./geo-checker analyze https://example.com --interactive
+./mux-geo analyze https://example.com --interactive
 # Choose: 3. local → 1. llama2
 
 # See available local models
-./geo-checker models local
+./mux-geo models local
 ```
 
 ### 📋 **Model Management**
 
 ```bash
 # List all available models
-./geo-checker models
+./mux-geo models
 
 # List models for specific provider
-./geo-checker models openai
-./geo-checker models claude
-./geo-checker models local
+./mux-geo models openai
+./mux-geo models claude
+./mux-geo models local
 
 # Interactive model selection
-./geo-checker analyze <url> --interactive
+./mux-geo analyze <url> --interactive
 ```
 
 ## Output Formats
@@ -444,35 +444,35 @@ See the `examples/` directory for:
 
 ```bash
 # 🎯 Intelligent analysis (recommended)
-./geo-checker analyze https://example.com  # Auto-detects best method
-./geo-checker analyze https://example.com --interactive  # Guided setup
-./geo-checker debug https://example.com  # Troubleshoot content issues
+./mux-geo analyze https://example.com  # Auto-detects best method
+./mux-geo analyze https://example.com --interactive  # Guided setup
+./mux-geo debug https://example.com  # Troubleshoot content issues
 
 # 📊 Output formats
-./geo-checker analyze https://example.com --output json > result.json
-./geo-checker scan ./website --output markdown > report.md
+./mux-geo analyze https://example.com --output json > result.json
+./mux-geo scan ./website --output markdown > report.md
 
 # 🤖 Enhanced LLM analysis
 export OPENAI_API_KEY="your-key"
-./geo-checker analyze https://example.com  # Auto-uses hybrid mode
-./geo-checker analyze https://example.com --mode llm --provider claude
-./geo-checker analyze https://example.com --mode hybrid --provider openai --model gpt-4o
+./mux-geo analyze https://example.com  # Auto-uses hybrid mode
+./mux-geo analyze https://example.com --mode llm --provider claude
+./mux-geo analyze https://example.com --mode hybrid --provider openai --model gpt-4o
 
 # 🏠 Local LLM analysis (privacy-focused, no API costs)
-./geo-checker analyze https://example.com --provider local --model llama2
-./geo-checker analyze https://example.com --mode hybrid --provider local --model llama3
+./mux-geo analyze https://example.com --provider local --model llama2
+./mux-geo analyze https://example.com --mode hybrid --provider local --model llama3
 
 # 📋 Model management
-./geo-checker models  # List all available models
-./geo-checker models openai  # List OpenAI models only
+./mux-geo models  # List all available models
+./mux-geo models openai  # List OpenAI models only
 
 # ⚡ Bulk processing
-./geo-checker bulk urls.txt --concurrent 10 --output json
-./geo-checker bulk urls.txt --mode hybrid --provider claude --concurrent 3
+./mux-geo bulk urls.txt --concurrent 10 --output json
+./mux-geo bulk urls.txt --mode hybrid --provider claude --concurrent 3
 
 # 📁 Directory scanning
-./geo-checker scan ./src --extensions .html,.htm --mode auto
-./geo-checker scan ./docs --mode hybrid --provider openai
+./mux-geo scan ./src --extensions .html,.htm --mode auto
+./mux-geo scan ./docs --mode hybrid --provider openai
 ```
 
 ## GEO Analysis
@@ -575,7 +575,7 @@ mux-geo-checker/
 #### "Content cannot be empty" Error
 ```bash
 # Debug content extraction
-./geo-checker debug https://problematic-url.com
+./mux-geo debug https://problematic-url.com
 
 # Check if page requires JavaScript or has unusual structure
 ```
@@ -593,10 +593,10 @@ echo $OPENAI_API_KEY
 #### Model Not Found
 ```bash
 # List available models
-./geo-checker models openai
+./mux-geo models openai
 
 # Use interactive selection
-./geo-checker analyze <url> --interactive
+./mux-geo analyze <url> --interactive
 ```
 
 #### Local LLM (Ollama) Issues
@@ -631,15 +631,15 @@ curl http://localhost:11434/api/generate -d '{
 
 ```bash
 # Check command help
-./geo-checker --help
-./geo-checker analyze --help
-./geo-checker models --help
+./mux-geo --help
+./mux-geo analyze --help
+./mux-geo models --help
 
 # Debug content extraction
-./geo-checker debug <url>
+./mux-geo debug <url>
 
 # Test with example content
-./geo-checker analyze https://example.com
+./mux-geo analyze https://example.com
 ```
 
 ## Contributing
@@ -662,15 +662,15 @@ MIT License - see LICENSE file for details.
 
 | Task | Command | Notes |
 |------|---------|-------|
-| **Basic analysis** | `./geo-checker analyze <url>` | Auto-detects best method |
-| **With API key** | `export OPENAI_API_KEY="key" && ./geo-checker analyze <url>` | Uses hybrid mode |
-| **Local LLM** | `./geo-checker analyze <url> --provider local --model llama2` | Privacy-focused, no API costs |
-| **Interactive setup** | `./geo-checker analyze <url> -i` | Guided model selection |
-| **List models** | `./geo-checker models` | Shows all available models |
-| **Local models only** | `./geo-checker models local` | Shows Ollama models |
-| **Debug issues** | `./geo-checker debug <url>` | Troubleshoot content extraction |
-| **Bulk analysis** | `./geo-checker bulk urls.txt` | Process multiple URLs |
-| **Local files** | `./geo-checker scan ./website` | Analyze local HTML files |
+| **Basic analysis** | `./mux-geo analyze <url>` | Auto-detects best method |
+| **With API key** | `export OPENAI_API_KEY="key" && ./mux-geo analyze <url>` | Uses hybrid mode |
+| **Local LLM** | `./mux-geo analyze <url> --provider local --model llama2` | Privacy-focused, no API costs |
+| **Interactive setup** | `./mux-geo analyze <url> -i` | Guided model selection |
+| **List models** | `./mux-geo models` | Shows all available models |
+| **Local models only** | `./mux-geo models local` | Shows Ollama models |
+| **Debug issues** | `./mux-geo debug <url>` | Troubleshoot content extraction |
+| **Bulk analysis** | `./mux-geo bulk urls.txt` | Process multiple URLs |
+| **Local files** | `./mux-geo scan ./website` | Analyze local HTML files |
 
 ## Support
 
