@@ -1,0 +1,7 @@
+# Example URLs for bulk analysis
+# One URL per line, comments start with #
+
+https://example.com
+https://docs.example.com/getting-started
+https://blog.example.com/seo-guide
+https://help.example.com/faq
