@@ -39,8 +39,8 @@ A powerful CLI tool for Generative Engine Optimization (GEO) that helps optimize
 
 ### Build from Source
 ```bash
-git clone <repository-url>
-cd mux-geo-checker
+git clone git@github.com:mux-ai/mux-geo.git
+cd mux-geo
 go mod tidy
 go build -o mux-geo main.go
 ```
@@ -75,16 +75,16 @@ The tool automatically validates API key formats:
 - **OpenAI**: Must start with `sk-` or `sk-proj-`
 - **Local**: No API key required - just needs Ollama running locally
 
-### 🏠 **Why Choose Local LLM?**
+### **Why Choose Local LLM?**
 
-- **🔒 Privacy**: Your data never leaves your machine
-- **💰 Cost-effective**: No API usage fees - unlimited analysis
-- **🚀 Speed**: No network latency, direct local processing
-- **🔌 Offline**: Works without internet connection
-- **🛡️ Security**: Perfect for sensitive content analysis
-- **⚙️ Control**: Choose your own models and configurations
+- **Privacy**: Your data never leaves your machine
+- **Cost-effective**: No API usage fees - unlimited analysis
+- **Speed**: No network latency, direct local processing
+- **Offline**: Works without internet connection
+- **Security**: Perfect for sensitive content analysis
+- **Control**: Choose your own models and configurations
 
-### 🎪 **Interactive Setup & Auto-Detection**
+### **Interactive Setup & Auto-Detection**
 
 ```bash
 # Let the tool guide you through setup
@@ -103,7 +103,7 @@ export OPENAI_API_KEY="your-key"  # Only OpenAI key set
 
 ## Usage
 
-### 🚀 **Quick Start (Zero Setup)**
+### **Quick Start (Zero Setup)**
 
 Get intelligent GEO analysis automatically:
 
@@ -124,7 +124,7 @@ Get intelligent GEO analysis automatically:
 ./mux-geo bulk urls.txt
 ```
 
-### 🤖 **Enhanced Analysis with LLMs**
+### **Enhanced Analysis with LLMs**
 
 For deeper insights with AI-powered analysis:
 
@@ -200,43 +200,43 @@ Scan a local directory for HTML files:
 
 ### 🎯 **Auto Mode (Default & Recommended)**
 
-- **🧠 Intelligent selection** - automatically chooses best method
-- **📊 Hybrid when possible** - averages local + LLM scores for accuracy
-- **🔄 Smart fallbacks** - uses local analysis when API unavailable
-- **💡 Helpful guidance** - shows recommendations for enhanced analysis
-- **⚡ Zero configuration** - works immediately without setup
+- **Intelligent selection** - automatically chooses best method
+- **Hybrid when possible** - averages local + LLM scores for accuracy
+- **Smart fallbacks** - uses local analysis when API unavailable
+- **Helpful guidance** - shows recommendations for enhanced analysis
+- **Zero configuration** - works immediately without setup
 
 ### 🏠 **Local Mode**
 
-- **🔧 No API keys required** - works completely offline
-- **⚡ Instant results** - fast rule-based analysis
-- **📊 Comprehensive scoring** across 5 key GEO factors:
+- **No API keys required** - works completely offline
+- **Instant results** - fast rule-based analysis
+- **Comprehensive scoring** across 5 key GEO factors:
   - Content Structure (25%) - heading hierarchy, organization
   - Semantic Clarity (25%) - readability, terminology
   - Context Richness (20%) - depth, examples, specifics
   - Authority Signals (15%) - citations, credibility
   - Accessibility (15%) - meta tags, structure
-- **🎯 Detailed recommendations** for technical improvements
-- **💨 Perfect for quick audits** and batch processing
+- **Detailed recommendations** for technical improvements
+- **Perfect for quick audits** and batch processing
 
 ### 🤖 **LLM Mode**
 
-- **🔑 Requires API keys** for chosen provider
-- **📊 Averages scores** - combines local rule-based + AI analysis automatically
-- **🧠 AI-powered insights** using advanced language models
-- **🎨 Beautiful formatting** with README-style output and table rendering
-- **🔍 Contextual analysis** with nuanced understanding
-- **📝 Natural language recommendations** with examples
-- **🎯 Best for content strategy** and comprehensive optimization
+- **Requires API keys** for chosen provider
+- **Averages scores** - combines local rule-based + AI analysis automatically
+- **AI-powered insights** using advanced language models
+- **Beautiful formatting** with README-style output and table rendering
+- **Contextual analysis** with nuanced understanding
+- **Natural language recommendations** with examples
+- **Best for content strategy** and comprehensive optimization
 
 ### ⚖️ **Hybrid Mode (Best of Both)**
 
-- **📊 Always averages scores** - mathematically combines local + LLM: `(Local + AI) / 2`
-- **🔍 Dual perspective** - technical structure + content quality assessment
-- **✅ Balanced accuracy** - LLM validates and enhances local analysis
-- **🎯 Comprehensive insights** - both rule-based and AI-powered evaluation
-- **🏆 Most accurate results** - recommended for professional use
-- **📈 Score transparency** - shows breakdown: "Score: 65/100 (Local: 29 + AI: 78, averaged)"
+- **Always averages scores** - mathematically combines local + LLM: `(Local + AI) / 2`
+- **Dual perspective** - technical structure + content quality assessment
+- **Balanced accuracy** - LLM validates and enhances local analysis
+- **Comprehensive insights** - both rule-based and AI-powered evaluation
+- **Most accurate results** - recommended for professional use
+- **Score transparency** - shows breakdown: "Score: 65/100 (Local: 29 + AI: 78, averaged)"
 
 ## Supported LLM Providers
 
